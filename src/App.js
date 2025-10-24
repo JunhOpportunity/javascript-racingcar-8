@@ -7,6 +7,7 @@ class App {
 
     const CAR_NAMES = await this.inputCarNames();
     const SPLITED_CAR_NAME = this.splitCarNames(CAR_NAMES);
+    carCount = SPLITED_CAR_NAME.length;
 
   async inputCarNames() {
     const CAR_NAMES = await MissionUtils.Console.readLineAsync(
