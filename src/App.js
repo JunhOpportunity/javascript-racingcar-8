@@ -9,6 +9,9 @@ class App {
     const SPLITED_CAR_NAME = this.splitCarNames(CAR_NAMES);
     carCount = SPLITED_CAR_NAME.length;
 
+    for (let i = 0; i < carCount; i++) {
+      racingResult[i] = "";
+    }
   async inputCarNames() {
     const CAR_NAMES = await MissionUtils.Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
