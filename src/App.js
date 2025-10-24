@@ -14,6 +14,11 @@ class App {
     }
 
     const MOVE_NUMBER = await this.inputMoveNumber();
+
+    for (let i = 0; i < MOVE_NUMBER; i++) {
+      this.progressRacing(carCount, racingResult);
+      this.printRacingProgress(SPLITED_CAR_NAME, racingResult);
+    }
   async inputCarNames() {
     const CAR_NAMES = await MissionUtils.Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
@@ -44,6 +49,22 @@ class App {
     }
 
     return MOVE_NUMBER;
+  }
+
+  progressRacing(carCount, racingResult) {
+    for (let i = 0; i < carCount; i++) {
+      const RANDOM_NUMBER = MissionUtils.Random.pickNumberInRange(0, 9);
+      if (RANDOM_NUMBER >= 4) {
+        racingResult[i] += "-";
+      }
+    }
+  }
+
+  printRacingProgress(SPLITED_CAR_NAME, racingResult) {
+    for (let i = 0; i < SPLITED_CAR_NAME.length; i++) {
+      MissionUtils.Console.print(`${SPLITED_CAR_NAME[i]} : ${racingResult[i]}`);
+    }
+    MissionUtils.Console.print("");
   }
 }
 
