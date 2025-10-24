@@ -6,6 +6,7 @@ class App {
     let racingResult = [];
 
     const CAR_NAMES = await this.inputCarNames();
+    const SPLITED_CAR_NAME = this.splitCarNames(CAR_NAMES);
 
   async inputCarNames() {
     const CAR_NAMES = await MissionUtils.Console.readLineAsync(
@@ -13,6 +14,18 @@ class App {
     );
 
     return CAR_NAMES;
+  }
+
+  splitCarNames(CAR_NAMES) {
+    const SPLITED_CAR_NAME = CAR_NAMES.split(",");
+
+    SPLITED_CAR_NAME.forEach((CAR_NAME) => {
+      if (CAR_NAME.length > 5) {
+        throw new Error("[ERROR] 차의 이름이 5글자 이하가 아닙니다!");
+      }
+    });
+
+    return SPLITED_CAR_NAME;
   }
 }
 
