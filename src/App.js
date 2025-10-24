@@ -19,6 +19,11 @@ class App {
       this.progressRacing(carCount, racingResult);
       this.printRacingProgress(SPLITED_CAR_NAME, racingResult);
     }
+
+    let winners = this.findRacingWinners(SPLITED_CAR_NAME, racingResult);
+    this.printRacingResult(winners);
+  }
+
   async inputCarNames() {
     const CAR_NAMES = await MissionUtils.Console.readLineAsync(
       "경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)"
@@ -65,6 +70,27 @@ class App {
       MissionUtils.Console.print(`${SPLITED_CAR_NAME[i]} : ${racingResult[i]}`);
     }
     MissionUtils.Console.print("");
+  }
+
+  findRacingWinners(SPLITED_CAR_NAME, racingResult) {
+    let maxRacingResult = 0;
+    let winners = [];
+
+    for (let i = 0; i < SPLITED_CAR_NAME.length; i++) {
+      if (racingResult[i].length > maxRacingResult) {
+        maxRacingResult = racingResult[i].length;
+        winners = [];
+        winners.push(SPLITED_CAR_NAME[i]);
+      } else if (racingResult[i].length == maxRacingResult) {
+        winners.push(SPLITED_CAR_NAME[i]);
+      }
+    }
+
+    return winners;
+  }
+
+  printRacingResult(winners) {
+    MissionUtils.Console.print(`최종 우승자 : ${winners.join(", ")}`);
   }
 }
 
