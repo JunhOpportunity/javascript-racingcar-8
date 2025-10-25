@@ -49,7 +49,7 @@ class App {
       "시도할 횟수는 몇 회인가요?"
     );
 
-    if (isNaN(MOVE_NUMBER) || Number(MOVE_NUMBER) == 0) {
+    if (isNaN(MOVE_NUMBER) || Number(MOVE_NUMBER) <= 0) {
       throw new Error("[ERROR] 시도 횟수를 정확히 입력해주세요.");
     }
 
