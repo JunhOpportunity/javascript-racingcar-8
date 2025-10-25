@@ -77,4 +77,13 @@ describe("사용자 입력", () => {
 
     await expect(app.run()).rejects.toThrow("[ERROR]");
   });
+
+  test("레이싱 횟수 예외 테스트", async () => {
+    const inputs = ["kim, jun, ho", -10];
+    mockQuestions(inputs);
+
+    const app = new App();
+
+    await expect(app.run()).rejects.toThrow("[ERROR]");
+  });
 });
