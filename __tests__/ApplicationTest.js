@@ -69,4 +69,12 @@ describe("사용자 입력", () => {
     expect(app.splitCarNames(userInput)).toEqual(expected);
   });
 
+  test("선수 이름 예외 테스트", async () => {
+    const inputs = ["kim, jun, ho, kimjunho"];
+    mockQuestions(inputs);
+
+    const app = new App();
+
+    await expect(app.run()).rejects.toThrow("[ERROR]");
+  });
 });
