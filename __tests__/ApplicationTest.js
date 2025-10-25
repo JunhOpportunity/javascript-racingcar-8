@@ -58,3 +58,15 @@ describe("자동차 경주", () => {
     await expect(app.run()).rejects.toThrow("[ERROR]");
   });
 });
+
+describe("사용자 입력", () => {
+  test.each([
+    ["a,b,c,d", ["a", "b", "c", "d"]],
+    ["kim,jun,ho", ["kim", "jun", "ho"]],
+  ])("%s => %s 분리 테스트", (userInput, expected) => {
+    const app = new App();
+
+    expect(app.splitCarNames(userInput)).toEqual(expected);
+  });
+
+});
